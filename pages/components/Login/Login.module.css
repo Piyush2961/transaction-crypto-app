@@ -1,0 +1,577 @@
+@import url("https://fonts.googleapis.com/css2?family=Patua+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Signika&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap");
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.upper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  width: 96%;
+  height: 96%;
+  border-radius: 20px;
+  overflow: hidden auto;
+  padding: 1rem;
+}
+
+.right {
+  color: black;
+  width: 50%;
+  min-width: 32rem;
+  height: 100%;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/backLogin.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.upperNames {
+  color: rgb(247, 215, 215);
+  /* background-color: red; */
+  position: absolute;
+  top: 0;
+  margin: 1rem;
+  width: 13rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upperNames span {
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.rightBoxes {
+  width: 80%;
+  height: 80%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem;
+}
+
+.rightBox1 {
+  width: 100%;
+  min-width: 32rem;
+  height: 65%;
+  background-color: #ffffff;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.innerRightBox1 {
+  width: 90%;
+  height: 90%;
+  /* background-color: blue; */
+  padding: 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.exchangesMain {
+  line-height: 0;
+  /* background-color: red; */
+  /* padding: 0.1rem; */
+  border-bottom: 2px solid #cecece;
+}
+
+.exchange {
+  /* background-color: yellow; */
+  color: black;
+  font-weight: 500;
+  padding: 0.5rem;
+  padding-left: 0;
+  width: fit-content;
+  border-bottom: 2px solid black;
+  transform: translateY(0.13rem);
+  cursor: pointer;
+}
+
+.exchangeCurrencyMain {
+  padding: 1rem;
+  /* background-color: yellow; */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.exchangeCurrencyFirstDiv , .exchangeCurrencySecondDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  /* background-color: red; */
+  border-radius: 1rem;
+  /* overflow: hidden; */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border: 1.5px solid #cecece;
+}
+
+/* First div */
+
+.divInput {
+  /* background-color: green; */
+  width: 60%;
+  padding: 1rem;
+  border-right: 1.5px solid #cecece;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.divInput input[type="number"]:disabled{background-color:transparent;}
+
+
+.divInput input {
+  width: 100%;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  font-family: "Josefin Sans", sans-serif;
+  background-color:transparent;
+}
+
+/* middle div */
+
+.middleDiv {
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.middleDiv > div {
+  margin: 1rem;
+  margin-left: .5rem;
+}
+
+/* Second div */
+
+.divSelect {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.simpleDiv {
+  width: 80%;
+  border: none;
+}
+
+.simple span{
+  font-weight: 800;
+}
+
+/* exchange now button */
+
+
+.exchangeNowButton {
+  width: 100%;
+  background-color: #02a77b;
+  color: white;
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: "IBM Plex Sans", sans-serif;
+  transition: all 0.5s;
+}
+
+.exchangeNowButton:active {
+  font-size: 1rem;
+}
+
+
+
+.rightBox2 {
+  width: 100%;
+  min-width: 32rem;
+  height: 30%;
+  background-color: #ffffff;
+  border-radius: 25px;
+  overflow: hidden auto;
+}
+
+.coin {
+  width: 100%;
+  height: 5rem;
+  /* background-color: red; */
+  border-bottom: 2px solid rgba(83, 75, 75, 0.381);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.coinNum {
+  /* background-color: red; */
+  width: 4rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d1d1d1;
+  font-size: 1.1rem;
+}
+
+.coinDetails {
+  /* background-color: yellow; */
+  min-width: 15rem;
+  width: 65%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: yellow; */
+  padding: 2rem;
+}
+.coinImage {
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coinName {
+  width: 55%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  /* background-color: red; */
+  text-align: center;
+}
+.coinSymbol {
+  width: 20%;
+  font-weight: 600;
+  color: #d1d1d1;
+}
+
+.coinUSD {
+  /* background-color: green; */
+  width: 15rem;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.usdTag {
+  margin-right: 0.5rem;
+  width: 20%;
+  font-weight: 600;
+  text-align: center;
+}
+.usdvalue {
+  width: 80%;
+  font-weight: 800;
+  /* background-color: red; */
+}
+
+.coinPercentage {
+  width: 5rem;
+  height: 100%;
+  /* background-color: blue; */
+  /* color: #4ec085; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.left {
+  color: black;
+  width: 50%;
+  min-width: 32rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.brandname {
+  position: absolute;
+  top: 0;
+  left: 3rem;
+}
+
+.login {
+  /* background-color: red; */
+  width: 100%;
+  height: 80%;
+  margin: 3rem 3rem 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+}
+
+.tagline h1 {
+  font-family: "Patua One", cursive;
+  font-size: 3.5rem;
+}
+
+.tagline p {
+  color: #afb8c8;
+  font-weight: 500;
+  line-height: 0;
+  font-size: 1.2rem;
+}
+
+/* Email designing */
+
+.email p {
+  font-size: 1.5rem;
+  font-family: "Signika", sans-serif;
+}
+
+.emailWthIcon {
+  /* background-color: blue; */
+  line-height: 0;
+  padding: 1rem;
+  width: 30rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e7edf3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.emailWthIcon span {
+  color: #73879d;
+  margin-right: 1rem;
+  font-size: 1.3rem;
+}
+
+.emailWthIcon input {
+  width: 90%;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  font-family: "Josefin Sans", sans-serif;
+  background-color:transparent;
+}
+
+
+.emailWthIcon input::placeholder {
+  color: #344562c7;
+}
+
+/* Password Designing */
+
+.password p {
+  font-size: 1.5rem;
+  font-family: "Signika", sans-serif;
+}
+
+.passwordWthIcon {
+  line-height: 0;
+  padding: 1rem;
+  width: 30rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e7edf3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.passwordWthIcon span {
+  color: #73879d;
+  margin-right: 1rem;
+  font-size: 1.3rem;
+}
+
+.passwordWthIcon input {
+  width: 90%;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  font-family: "Josefin Sans", sans-serif;
+  background-color:transparent;
+}
+
+.passwordWthIcon input::placeholder {
+  color: #344562c7;
+}
+
+/* Forgot Password */
+
+.forgotPassword {
+  width: 30rem;
+  /* background-color: red; */
+  text-align: right;
+}
+
+.forgotPassword h5 {
+  font-size: medium;
+  cursor: pointer;
+  color: #97a3b8;
+  font-weight: 500;
+}
+
+/* Login Button */
+
+.loginButton {
+  width: 30rem;
+  background-color: #8806ff;
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: "IBM Plex Sans", sans-serif;
+  transition: all 0.5s;
+}
+
+.loginButton:active {
+  font-size: 1rem;
+}
+
+/* Create Account */
+
+.createAccount {
+  width: 30rem;
+  text-align: center;
+  color: #97a3b8;
+  font-size: 1.1rem;
+}
+.createAccount h5 {
+  font-weight: 500;
+}
+
+.create {
+  color: #9455fe;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Simple test editing */
+
+
+
+
+@media (max-width: 1160px) {
+  .right {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  .left {
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+  }
+  .upper {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .left {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .tagline {
+    text-align: center;
+  }
+
+  .tagline h1 {
+    font-size: 2.5rem;
+  }
+
+  .tagline p {
+    font-size: 1rem;
+  }
+
+  .credentials {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .email {
+    width: 25rem;
+  }
+
+  .emailWthIcon {
+    width: 25rem;
+  }
+
+  .password {
+    width: 25rem;
+  }
+
+  .passwordWthIcon {
+    width: 25rem;
+  }
+
+  .forgotPassword {
+    width: 25rem;
+  }
+  .loginButton {
+    width: 25rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .email {
+    width: 20rem;
+  }
+
+  .emailWthIcon {
+    width: 20rem;
+  }
+
+  .password {
+    width: 20rem;
+  }
+
+  .passwordWthIcon {
+    width: 20rem;
+  }
+
+  .forgotPassword {
+    width: 20rem;
+  }
+  .loginButton {
+    width: 20rem;
+  }
+
+  /* .createAccount {
+    background-color: green;
+    width: 20rem;
+  } */
+}
