@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Indie+Flower");
 .main {
-  box-shadow: 0 0 10rem 0 #000000 inset;
+  box-shadow: 0 0 10rem 0 transparent inset;
 }
 
 .main {
@@ -14,12 +14,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #1d1f20;
+  /* background-color: #1d1f20; */
+  /* background-color: #87CEEB; */
+  background-image: url("/sky.jpeg");
+  background-size: cover;
+  background-position: center;
   color: #ffffff;
   font-family: "Josefin Sans", sans-serif;
   font-size: 10px;
   font-weight: 100;
-  box-shadow: 0 0 10rem 0 #000000 inset;
+  /* box-shadow: 0 0 10rem 0 #87CEEB inset; */
 }
 
 .svgcalLoader {
@@ -31,6 +35,7 @@
 
 .calloaderplane {
   fill: #ffa500;
+  /* fill: pink; */
 }
 
 .calloaderpath {

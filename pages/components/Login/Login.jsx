@@ -9,61 +9,78 @@ import RocketLoader from "../Loader/RocketLoader";
 
 const { SingleValue, Option } = components;
 
-const IconSingleValue = (props) => (
-  <SingleValue {...props}>
-    <div
-      style={{
-        marginRight: "20px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        cursor: "pointer",
-      }}
-    >
-      <Image
-        src={props.data.image}
-        alt="Image"
-        style={{
-          height: "30px",
-          width: "30px",
-          borderRadius: "50%",
-          marginRight: "10px",
-        }}
-        width="25"
-        height="25"
-      />
-    </div>
-    {props.data.label}
-  </SingleValue>
-);
+const IconSingleValue = (props) =>{
 
-const IconOption = (props) => (
-  <Option {...props}>
-    <div
-      style={{
-        marginRight: "20px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        cursor: "pointer",
-      }}
-    >
-      <Image
-        src={props.data.image}
-        alt="Image"
+  const myLoader = ({ src }) => {
+    return `https://assets.coincap.io/assets/icons/${src}`
+  }
+
+ return (
+    <SingleValue {...props}>
+      <div
         style={{
-          height: "30px",
-          width: "30px",
-          borderRadius: "50%",
-          marginRight: "10px",
+          marginRight: "20px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
         }}
-        width="25"
-        height="25"
-      />
-    </div>
-    {props.data.label}
-  </Option>
-);
+      >
+        <Image
+          loader={myLoader}
+          src={props.data.image}
+          alt="Image"
+          style={{
+            height: "30px",
+            width: "30px",
+            borderRadius: "50%",
+            marginRight: "10px",
+          }}
+          width="25"
+          height="25"
+        />
+      </div>
+      {props.data.label}
+    </SingleValue>
+  );
+};
+
+const IconOption = (props) =>{
+
+  const myLoader = ({ src }) => {
+    return `https://assets.coincap.io/assets/icons/${src}`
+  }
+
+  return (
+    <Option {...props}>
+      <div
+        style={{
+          marginRight: "20px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
+        }}
+      >
+        <Image
+          loader={myLoader}
+          src={props.data.image}
+          alt="Image"
+          style={{
+            height: "30px",
+            width: "30px",
+            borderRadius: "50%",
+            marginRight: "10px",
+          }}
+          width="25"
+          height="25"
+        />
+      </div>
+      {props.data.label}
+    </Option>
+  );
+
+};  
 
 const groupBadgeStyles = {
   backgroundColor: "#EBECF0",
@@ -213,7 +230,8 @@ const Login = () => {
             return {
               value: item.symbol,
               label: item.name,
-              image: `/${item.symbol}.png`,
+              // image: `/${item.symbol}.png`,
+              image: `/${item.symbol.toLowerCase()}@2x.png`,
             };
           })
         );
@@ -224,7 +242,8 @@ const Login = () => {
               return {
                 value: item.symbol,
                 label: item.name,
-                image: `/${item.symbol}.png`,
+                // image: `/${item.symbol}.png`,
+                image: `/${item.symbol.toLowerCase()}@2x.png`,
               };
             })
             .filter((ele) => ele.value != fromData)
@@ -240,6 +259,10 @@ const Login = () => {
         setIsRocketLoading(false);
       });
   };
+
+  const myLoader = ({ src, width, quality }) => {
+    return `https://assets.coincap.io/assets/icons/${src}`
+  }
 
   useEffect(() => {
     getExchangeItems();
@@ -473,7 +496,8 @@ const Login = () => {
                           <div className={styles.coinNum}>{item.rank}</div>
                           <div className={styles.coinDetails}>
                             <Image
-                              src={`/${item.symbol}.png`}
+                              loader={myLoader}
+                              src={`/${item.symbol.toLowerCase()}@2x.png`}
                               alt="me"
                               width="25"
                               height="25"
