@@ -8,8 +8,8 @@ import styles from "./../styles/Login.module.css";
 import RocketLoader from "./components/Loader/RocketLoader";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { loginSuccess } from "./redux/authActions";
-import { checkLocally } from "./checkLocally";
+import { loginSuccess } from "../redux/authActions";
+import { checkLocally } from "../redux/checkLocally";
 import Loader from "./components/Loader/Loader";
 
 const { SingleValue, Option } = components;

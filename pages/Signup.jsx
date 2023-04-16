@@ -3,8 +3,8 @@ import Router from "next/router";
 import Head from "next/head";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { loginSuccess } from "./redux/authActions";
-import { checkLocally } from "./checkLocally";
+import { loginSuccess } from "../redux/authActions";
+import { checkLocally } from "../redux/checkLocally";
 
 const Signup = () => {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
