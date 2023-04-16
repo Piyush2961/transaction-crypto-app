@@ -4,18 +4,22 @@ import { components } from "react-select";
 import Head from "next/head";
 import Image from "next/image";
 import Router from "next/router";
-import styles from "./Login.module.css";
-import RocketLoader from "../Loader/RocketLoader";
+import styles from "./../styles/Login.module.css";
+import RocketLoader from "./components/Loader/RocketLoader";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "./redux/authActions";
+import { checkLocally } from "./checkLocally";
+import Loader from "./components/Loader/Loader";
 
 const { SingleValue, Option } = components;
 
-const IconSingleValue = (props) =>{
-
+const IconSingleValue = (props) => {
   const myLoader = ({ src }) => {
-    return `https://assets.coincap.io/assets/icons/${src}`
-  }
+    return `https://assets.coincap.io/assets/icons/${src}`;
+  };
 
- return (
+  return (
     <SingleValue {...props}>
       <div
         style={{
@@ -45,11 +49,10 @@ const IconSingleValue = (props) =>{
   );
 };
 
-const IconOption = (props) =>{
-
+const IconOption = (props) => {
   const myLoader = ({ src }) => {
-    return `https://assets.coincap.io/assets/icons/${src}`
-  }
+    return `https://assets.coincap.io/assets/icons/${src}`;
+  };
 
   return (
     <Option {...props}>
@@ -79,8 +82,7 @@ const IconOption = (props) =>{
       {props.data.label}
     </Option>
   );
-
-};  
+};
 
 const groupBadgeStyles = {
   backgroundColor: "#EBECF0",
@@ -128,6 +130,7 @@ const formatGroupLabel = (data) => (
 );
 
 const Login = () => {
+  const [showLoader, setShowLoader] = useState(false);
   const [data, setData] = useState();
   const [exchangeData, setExchangeData] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -144,7 +147,59 @@ const Login = () => {
 
   const [isRocketLoading, setIsRocketLoading] = useState(false);
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const axios = require("axios");
+  const isAuthenticated = useSelector((state) => state.isAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      Router.push("/");
+    }
+  }, [isAuthenticated]);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (checkLocally(user)) {
+      dispatch(loginSuccess());
+    }
+    if (isAuthenticated) {
+      Router.push("/");
+    }
+  }, [dispatch, isAuthenticated]);
+
+  const handleSubmit = () => {
+    setShowLoader(true);
+    // Perform login logic here
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "https://crypto-backend-jet.vercel.app/api/users/login",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify({
+        email,
+        password,
+      }),
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        localStorage.setItem("user", JSON.stringify(response.data));
+        dispatch(loginSuccess());
+        setShowLoader(false);
+      })
+      .catch((error) => {
+        setShowLoader(false);
+        console.log(error);
+        alert("Invalid Credentials");
+      });
+  };
 
   const getData = () => {
     const config = {
@@ -191,7 +246,7 @@ const Login = () => {
   };
 
   const exchange = () => {
-     setIsLoadingForToAmount(true);
+    setIsLoadingForToAmount(true);
     const config = {
       method: "get",
       // url: `https://vip-api.changenow.io/v1.2/exchange/estimate?fromCurrency=${fromData.toLowerCase}&fromNetwork=${fromData.toLowerCase}&fromAmount=2&toCurrency=eth&toNetwork=eth&type=direct`,
@@ -261,8 +316,8 @@ const Login = () => {
   };
 
   const myLoader = ({ src, width, quality }) => {
-    return `https://assets.coincap.io/assets/icons/${src}`
-  }
+    return `https://assets.coincap.io/assets/icons/${src}`;
+  };
 
   useEffect(() => {
     getExchangeItems();
@@ -288,6 +343,7 @@ const Login = () => {
       <Head>
         <title>Login Page</title>
       </Head>
+      {showLoader ? <Loader /> : ""}
       <main className={styles.main}>
         <div className={styles.upper}>
           <div className={styles.left}>
@@ -305,7 +361,11 @@ const Login = () => {
                   <p>Email Address</p>
                   <div className={styles.emailWthIcon}>
                     <span>@</span>
-                    <input type="email" placeholder="abcd@gmail.com" />
+                    <input
+                      type="email"
+                      placeholder="abcd@gmail.com"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
                 </div>
 
@@ -318,6 +378,7 @@ const Login = () => {
                     <input
                       type="password"
                       placeholder="Password must be of length 8 or more"
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
                 </div>
@@ -326,12 +387,19 @@ const Login = () => {
                   <h5>Forgot Password ?</h5>
                 </div>
 
-                <button className={styles.loginButton}>Login</button>
+                <button className={styles.loginButton} onClick={handleSubmit}>
+                  Login
+                </button>
 
                 <div className={styles.createAccount}>
                   <h5>
                     Not registered yet?{" "}
-                    <span className={styles.create}>Create an account</span>
+                    <span
+                      className={styles.create}
+                      onClick={() => Router.push("/Signup")}
+                    >
+                      Create an account
+                    </span>
                   </h5>
                 </div>
               </div>

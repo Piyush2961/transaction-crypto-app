@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./RocketLoader.module.css";
+import styles from "../../../styles/RocketLoader.module.css";
 
 const RocketLoader = () => {
   return (

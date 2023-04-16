@@ -1,8 +1,33 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Login from './components/Login/Login'
+import React, { useEffect, useState } from "react";
+import Head from "next/head";
+import Image from "next/image";
+import Login from "./Login";
+import Router, { useRouter } from "next/router";
+import { useSelector } from 'react-redux';
+import { useDispatch } from "react-redux";
+import { loginSuccess, logoutSuccess } from "./redux/authActions";
+import { checkLocally } from "./checkLocally";
+import Loader from "./components/Loader/Loader";
 
 export default function Home() {
+  const isAuthenticated = useSelector(state => state.isAuthenticated);
+  const dispatch = useDispatch();
+
+   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));    
+    if (checkLocally(user)) {
+      dispatch(loginSuccess());
+    }
+    if (!isAuthenticated) {
+      Router.push("/Login");
+    }
+  }, [dispatch, isAuthenticated]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    dispatch(logoutSuccess());
+  };
+
   return (
     <div>
       {/* <Head>
@@ -11,7 +36,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head> */}
 
-     <Login />
+      {/* <Loader /> */}
+      <div>
+        <h1>Home</h1>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
     </div>
-  )
+  );
 }
