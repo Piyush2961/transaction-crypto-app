@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Select from "react-select";
 import { components } from "react-select";
 import Head from "next/head";
@@ -150,7 +151,6 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const axios = require("axios");
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
   useEffect(() => {

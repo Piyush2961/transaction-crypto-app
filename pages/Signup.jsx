@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Head from "next/head";
 import styles from "../styles/Signup.module.css";
 import Router from "next/router";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../redux/authActions";
 import { checkLocally } from "../redux/checkLocally";
+import Loader from "./components/Loader/Loader";
 
 const Signup = () => {
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
@@ -20,13 +23,53 @@ const Signup = () => {
     }
   }, [dispatch, isAuthenticated]);
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPASS, setShowPASS] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
+
+  const handleSubmit = () => {
+    setShowLoader(true);
+    // Perform signup logic here
+    let config = {
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "https://crypto-backend-jet.vercel.app/api/users/signup",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify({
+        name,
+        email,
+        password,
+        confirmPassword,
+      }),
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        localStorage.setItem("user", JSON.stringify(response.data));
+        dispatch(loginSuccess());
+        setShowLoader(false);
+      })
+      .catch((error) => {
+        setShowLoader(false);
+        console.log(error, error.response.data.message);
+        error.response.data.message.includes("E11000 duplicate key error")
+          ? alert("Email already exists")
+          : alert("Invalid Credentials");
+      });
+  };
 
   return (
     <>
+      <Head>
+        <title>Login Page</title>
+      </Head>
+      {showLoader ? <Loader /> : ""}
       <main className={styles.main}>
         <div className={styles.upper}>
           <div className={styles.left}>
@@ -49,7 +92,7 @@ const Signup = () => {
                     <input
                       type="email"
                       placeholder="Enter your name"
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => setName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -135,7 +178,9 @@ const Signup = () => {
                   </div>
                 </div>
 
-                <button className={styles.signupButton}>Create account</button>
+                <button className={styles.signupButton} onClick={handleSubmit}>
+                  Create account
+                </button>
 
                 <div className={styles.createAccount}>
                   <h5>
