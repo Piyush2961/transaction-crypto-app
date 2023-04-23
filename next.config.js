@@ -1,20 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
   images: {
-    loader: 'imgix',
-    path: 'https://example.com/myaccount/',
+    loader: "imgix",
+    path: "",
+    domains: ["assets.coincap.io"],
   },
-  // images: {
-  //   remotePatterns: [
-  //     {
-  //       protocol: 'https',
-  //       hostname: 'assets.coincap.io',
-  //       port: '',
-  //       pathname: '/assets/icons/**',
-  //     },
-  //   ],
-  // },
 };
-
-module.exports = nextConfig;

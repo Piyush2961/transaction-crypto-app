@@ -55,6 +55,10 @@
   left: 3rem;
 }
 
+.tagline {
+  text-align: center;
+}
+
 .tagline h1 {
   font-family: "Pacifico", cursive;
   font-size: 3rem;

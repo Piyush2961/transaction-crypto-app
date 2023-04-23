@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Signup.module.css";
 import Router from "next/router";
-import Head from "next/head";
-import Image from "next/image";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../redux/authActions";
@@ -38,7 +36,7 @@ const Signup = () => {
             <div className={styles.signup}>
               <div className={styles.tagline}>
                 <h1>Create your account</h1>
-                <p>Let's get started with crypto journey </p>
+                <p>{`Let's get started with crypto journey`}</p>
               </div>
 
               <div className={styles.credentials}>
